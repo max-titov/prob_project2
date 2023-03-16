@@ -35,3 +35,16 @@ elif values[0] < 0.7:
     isBusy = True
 else:
     isNotThere = True
+
+
+
+# def linear_congruential_generator(seed, a, c, k, n):
+#     x = seed
+#     u = []
+#     for i in range(n):
+#         x = (a * x + c) % k
+#         u.append(x / k)
+#     return u
+
+# u = linear_congruential_generator(1000, 24693, 3517, 2**17, 53)
+# print(u[50:53])
