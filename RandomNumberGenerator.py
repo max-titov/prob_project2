@@ -14,6 +14,3 @@ def NumGenerator (x, n):
         NumGenerator(x1, n + 1)
 
 NumGenerator(1000, 1)
-
-
-
