@@ -19,11 +19,26 @@ def NumGenerator(x, n, count):
         NumGenerator(x1, n + 1, count)
 
 
-def generateRandomNumbers(count):
+def rand_num_generator(seed, a, c, k, n):
+    x = seed
+    u = []
+    for i in range(n):
+        x = (a * x + c) % k
+        u.append(x / k)
+    return u
+
+# u = linear_congruential_generator(1000, 24693, 3517, 2**17, 53)
+
+
+def generate_random_numbers_recursive(count):
     global values
     values = []
     NumGenerator(1000, 1, count)
     return values
+
+
+def generate_random_numbers(count):
+    return rand_num_generator(x, a, c, K, count)
 
 #NumGenerator(1000, 1)
 
@@ -43,13 +58,4 @@ def generateRandomNumbers(count):
 #     isNotThere = True
 
 
-# def linear_congruential_generator(seed, a, c, k, n):
-#     x = seed
-#     u = []
-#     for i in range(n):
-#         x = (a * x + c) % k
-#         u.append(x / k)
-#     return u
-
-# u = linear_congruential_generator(1000, 24693, 3517, 2**17, 53)
 # print(u[50:53])
