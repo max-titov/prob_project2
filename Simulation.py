@@ -31,6 +31,7 @@ for i in range(simulation_count):
         else:
             #not there
             time_spent += 25  # time to ring through
+        time_spent += 1  # time to end call
         call_attempts += 1
 
     total_times.append(time_spent)
