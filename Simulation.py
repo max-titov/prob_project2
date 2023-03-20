@@ -34,6 +34,8 @@ for i in range(simulation_count):
 
     total_times.append(time_spent)
 
+total_times.sort()
+
 for time in total_times:
     print(time)
 
