@@ -1,0 +1,22 @@
+import math
+
+x = 1000
+a = 24693
+c = 3517
+K = 2**17
+
+def rand_num_generator(seed, a, c, k, n):
+    x = seed
+    u = []
+    for i in range(n):
+        x = (a * x + c) % k
+        u.append(x / k)
+    return u
+
+def generate_random_numbers(count):
+    return rand_num_generator(x, a, c, K, count)
+
+generate_random_numbers(10)
+
+
+
