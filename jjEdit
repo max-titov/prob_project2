@@ -17,8 +17,8 @@ def rand_num_generator(seed, a, c, k, n):
 totalTimes = []
 rand_num_generator(1000,24693,3517,2**17,5000)  #Used for determining randon numbers
 
-for i in range(100):
-    print("Randon Number " + str(i+1) + ": " + str(u[i]))
+# for i in range(100):
+#     print("Randon Number " + str(i+1) + ": " + str(u[i]))
 
 
 for i in range(500):
@@ -45,19 +45,20 @@ for i in range(500):
 totalTimes.sort()
 
 
-#Prints data in ordered list
-# for time in totalTimes:
-#     print(time)
+# Prints data in ordered list
 
-# print("Mean:", numpy.mean(totalTimes))
-# print("Median:", numpy.median(totalTimes))
+for time in totalTimes:
+    print(time)
 
 
 
 
 #Prints data labeling for each attempt
 # for time in range(500):
-#     print("Time for Person " + str(time+1) + ": " + str(totalTimes[time]))
+#     print("Time for Person " + str(time+1) + ": " + str(totalTimes[time]) + " seconds")
+
+print("Mean:", numpy.mean(totalTimes))
+print("Median:", numpy.median(totalTimes))
 
 
 
