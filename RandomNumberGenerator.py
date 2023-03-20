@@ -43,21 +43,3 @@ def generate_random_numbers(count):
     return rand_num_generator(x, a, c, K, count)
 
 #NumGenerator(1000, 1)
-
-
-# Second Part
-
-# isAvailable = False
-# isBusy = False
-# isNotThere = False
-
-
-# if values[0] < 0.5:
-#     isAvailable = True
-# elif values[0] < 0.7:
-#     isBusy = True
-# else:
-#     isNotThere = True
-
-
-# print(u[50:53])
