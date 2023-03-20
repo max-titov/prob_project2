@@ -19,21 +19,19 @@ def NumGenerator (x, n):
     else:
         NumGenerator(x1, n + 1)
 
-NumGenerator(1000, 1)
+# NumGenerator(1000, 1)
 
 
 # Second Part
 
-busy = 0.2
-unavailable = 0.3
-available = 0.5
+def VarGenerator (p):
+    busy = 0.2
+    unavailable = 0.3
+    available = 0.5
 
-for i in range(50):
-    r = values[i]
-
-    if r < busy:
+    if p < busy:
         outcome = 'busy'
-    elif r < busy + unavailable:
+    elif p < busy + unavailable:
         outcome = 'unavailable'
     else:
         outcome = 'available'
@@ -42,12 +40,25 @@ for i in range(50):
 
 # Third Part
 
-def inverse_cdf(i):
-    return -12 * math.log(1-i)
+def inverse_cdf(p):
+    return -12 * math.log(1-p)
 
-a = values[0]
-time = inverse_cdf(a)
-print(time)
+# time = inverse_cdf(p)
+# print(time)
+
+# Fourth Part
+
+NumGenerator(1000, 1)
+print(len(values))
+
+for i in 50:
+    
+
+
+
+
+
+
 
 
 
