@@ -1,22 +1,65 @@
 import math
+import numpy
 
 x = 1000
 a = 24693
 c = 3517
 K = 2**17
+u = []
 
 def rand_num_generator(seed, a, c, k, n):
     x = seed
-    u = []
     for i in range(n):
         x = (a * x + c) % k
         u.append(x / k)
     return u
 
-def generate_random_numbers(count):
-    return rand_num_generator(x, a, c, K, count)
+totalTimes = []
+rand_num_generator(1000,24693,3517,2**17,5000)  #Used for determining randon numbers
 
-generate_random_numbers(10)
+for i in range(100):
+    print("Randon Number " + str(i+1) + ": " + str(u[i]))
+
+
+for i in range(500):
+    callAttempts = 0
+    timeSpent = 0
+    while callAttempts < 4:
+        rnPath = u.pop(0)
+        timeSpent += 6
+        if (rnPath < 0.2): #Busy
+            timeSpent += 4
+        elif (rnPath < 0.5): #Unavailable
+            timeSpent += 26
+        else: #Available
+            rnTime = u.pop(0)
+            pickUpTime = -12*math.log(1-rnTime)
+            if pickUpTime <= 25:
+                timeSpent += pickUpTime #Picks up during Available time
+                callAttempts = 5 #Ends loop
+            else:
+                timeSpent += 26 #Did not pick up when available
+        callAttempts += 1
+    totalTimes.append(timeSpent)
+
+totalTimes.sort()
+
+
+#Prints data in ordered list
+# for time in totalTimes:
+#     print(time)
+
+# print("Mean:", numpy.mean(totalTimes))
+# print("Median:", numpy.median(totalTimes))
+
+
+
+
+#Prints data labeling for each attempt
+# for time in range(500):
+#     print("Time for Person " + str(time+1) + ": " + str(totalTimes[time]))
+
+
 
 
 
