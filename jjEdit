@@ -8,6 +8,7 @@ K = 2**17
 u = []
 
 def rand_num_generator(seed, a, c, k, n):
+    #n is how many randon numbers will be created
     x = seed
     for i in range(n):
         x = (a * x + c) % k
@@ -15,7 +16,7 @@ def rand_num_generator(seed, a, c, k, n):
     return u
 
 totalTimes = []
-rand_num_generator(1000,24693,3517,2**17,5000)  #Used for determining randon numbers
+rand_num_generator(x,a,c,K,5000)  #Used for determining randon numbers
 
 # for i in range(100):
 #     print("Randon Number " + str(i+1) + ": " + str(u[i]))
