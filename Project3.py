@@ -1,0 +1,70 @@
+import math
+import numpy
+
+x = 1000
+a = 24693
+c = 3967
+K = 2**18
+u = []
+
+def rand_num_generator(seed, a, c, k, n):
+    #n is how many randon numbers will be created
+    x = seed
+    for i in range(n):
+        x = (a * x + c) % k
+        u.append(x / k)
+    return u
+
+totalTimes = []
+rand_num_generator(x,a,c,K,5000)  #Used for determining randon numbers
+
+# for i in range(100):
+#     print("Randon Number " + str(i+1) + ": " + str(u[i]))
+
+
+for i in range(500):
+    callAttempts = 0
+    timeSpent = 0
+    while callAttempts < 4:
+        rnPath = u.pop(0)
+        timeSpent += 6
+        if (rnPath < 0.2): #Busy
+            timeSpent += 4
+        elif (rnPath < 0.5): #Unavailable
+            timeSpent += 26
+        else: #Available
+            rnTime = u.pop(0)
+            pickUpTime = -12*math.log(1-rnTime)
+            if pickUpTime <= 25:
+                timeSpent += pickUpTime #Picks up during Available time
+                callAttempts = 5 #Ends loop
+            else:
+                timeSpent += 26 #Did not pick up when available
+        callAttempts += 1
+    totalTimes.append(timeSpent)
+
+totalTimes.sort()
+
+
+# Prints data in ordered list
+
+for time in totalTimes:
+    print(time)
+
+
+
+
+#Prints data labeling for each attempt
+# for time in range(500):
+#     print("Time for Person " + str(time+1) + ": " + str(totalTimes[time]) + " seconds")
+
+print("Mean:", numpy.mean(totalTimes))
+print("Median:", numpy.median(totalTimes))
+print("1st Quartile:", numpy.quantile(totalTimes, 0.25))
+print("3rd Quartile:", numpy.quantile(totalTimes, 0.75))
+
+
+
+
+
+
