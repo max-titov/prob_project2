@@ -15,55 +15,34 @@ def rand_num_generator(seed, a, c, k, n):
         u.append(x / k)
     return u
 
-totalTimes = []
-rand_num_generator(x,a,c,K,5000)  #Used for determining randon numbers
+
+u = rand_num_generator(x,a,c,K,215000)  #Used for determining randon numbers
+print(u[50])
+print(u[51])
+print(u[52])
 
 # for i in range(100):
 #     print("Randon Number " + str(i+1) + ": " + str(u[i]))
 
+sample = []
+sample_size = 110
+sizes_of_each_sample = [10, 30, 50, 100, 250, 500, 1000]
 
-for i in range(500):
-    callAttempts = 0
-    timeSpent = 0
-    while callAttempts < 4:
-        rnPath = u.pop(0)
-        timeSpent += 6
-        if (rnPath < 0.2): #Busy
-            timeSpent += 4
-        elif (rnPath < 0.5): #Unavailable
-            timeSpent += 26
-        else: #Available
-            rnTime = u.pop(0)
-            pickUpTime = -12*math.log(1-rnTime)
-            if pickUpTime <= 25:
-                timeSpent += pickUpTime #Picks up during Available time
-                callAttempts = 5 #Ends loop
-            else:
-                timeSpent += 26 #Did not pick up when available
-        callAttempts += 1
-    totalTimes.append(timeSpent)
+for i in range(len(sizes_of_each_sample)):
+    sample.append([])
+    current_sample_size = sizes_of_each_sample.pop(0)
+    for j in range(sample_size):
+        current_sample = 0
+        for k in range(current_sample_size):
+            random_number = u.pop(0)
+            random_variable_value = math.sqrt((-2*math.log(1-random_number))/((1/(4*math.pi))**2))
+            current_sample += random_variable_value
+        sample[i].append(current_sample/current_sample_size)
 
-totalTimes.sort()
-
-
-# Prints data in ordered list
-
-for time in totalTimes:
-    print(time)
-
-
-
-
-#Prints data labeling for each attempt
-# for time in range(500):
-#     print("Time for Person " + str(time+1) + ": " + str(totalTimes[time]) + " seconds")
-
-print("Mean:", numpy.mean(totalTimes))
-print("Median:", numpy.median(totalTimes))
-print("1st Quartile:", numpy.quantile(totalTimes, 0.25))
-print("3rd Quartile:", numpy.quantile(totalTimes, 0.75))
-
-
+for value in sample:
+    for avg in value:
+        print(avg)
+    print()
 
 
 
