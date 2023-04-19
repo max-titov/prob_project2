@@ -17,6 +17,9 @@ def rand_num_generator(seed, a, c, k, n):
 
 
 u = rand_num_generator(x,a,c,K,215000)  #Used for determining randon numbers
+print(u[0])
+print(u[1])
+print(u[2])
 print(u[50])
 print(u[51])
 print(u[52])
