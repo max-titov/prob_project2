@@ -63,8 +63,3 @@ print("Median:", numpy.median(totalTimes))
 print("1st Quartile:", numpy.quantile(totalTimes, 0.25))
 print("3rd Quartile:", numpy.quantile(totalTimes, 0.75))
 
-
-
-
-
-
