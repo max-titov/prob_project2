@@ -20,9 +20,6 @@ u = rand_num_generator(x,a,c,K,215000)  #Used for determining randon numbers
 print(u[0])
 print(u[1])
 print(u[2])
-print(u[50])
-print(u[51])
-print(u[52])
 
 # for i in range(100):
 #     print("Randon Number " + str(i+1) + ": " + str(u[i]))
@@ -38,7 +35,7 @@ for i in range(len(sizes_of_each_sample)):
         current_sample = 0
         for k in range(current_sample_size):
             random_number = u.pop(0)
-            random_variable_value = math.sqrt((-2*math.log(1-random_number))/((1/(4*math.pi))**2))
+            random_variable_value = math.sqrt((-6498*math.log(1-random_number)))
             current_sample += random_variable_value
         sample[i].append(current_sample/current_sample_size)
 
